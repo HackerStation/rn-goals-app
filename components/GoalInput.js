@@ -15,7 +15,10 @@ export const GoalInput = ({ onAddGoal }) => {
       <Button
         title='Add'
         style={styles.addButton}
-        onPress={() => onAddGoal(enteredGoal)}
+        onPress={() => {
+          onAddGoal(enteredGoal);
+          setEnteredGoal('');
+        }}
       />
     </View>
   );

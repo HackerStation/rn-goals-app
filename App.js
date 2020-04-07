@@ -24,12 +24,21 @@ export default function App() {
     ]);
   };
 
+  const deleteGoalHandler = (key) => {
+    setCourseGoals((prevGoals) => prevGoals.filter((goal) => goal.key !== key));
+  };
+
   return (
     <View style={styles.screen}>
       <GoalInput onAddGoal={addGoalHandler} />
       <FlatList
         data={courseGoals}
-        renderItem={(itemData) => <GoalItem value={itemData.item.value} />}
+        renderItem={(itemData) => (
+          <GoalItem
+            value={itemData.item.value}
+            onDelete={() => deleteGoalHandler(itemData.item.key)}
+          />
+        )}
       />
     </View>
   );
